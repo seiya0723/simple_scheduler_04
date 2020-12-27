@@ -30,6 +30,7 @@ class SchedulerView(View):
 
             #(3)クエリを作る
             query       = Q()
+            #TODO:ここでANDとORを分岐させる
             for word in search_list:
                 #TIPS:AND検索の場合は&を、OR検索の場合は|を使用する。
                 query &= Q(task__contains=word)
@@ -84,6 +85,16 @@ class SchedulerDelete(View):
         posted  = Scheduler.objects.filter(id=request.POST["id"])
         posted.delete()
         """
+
+        """
+        #編集処理はこんな感じ
+        posted  = Scheduler( deadline    = request.POST["deadline"],
+                             task        = request.POST["task"],
+                                )
+        posted.save()
+        """
+
+
 
         #バリデーションを行う
         formset = SchedulerDeleteForm(request.POST)

@@ -40,6 +40,7 @@
         </form>
 
 
+
         <form method="POST">
             <!--↓POST文実行時はCSRF対策のため必ず指定-->
             {% csrf_token %}
@@ -60,7 +61,10 @@
         -->
 
         <!--↓テンプレートタグで繰り返し処理、条件分岐を行うことが可能(P74)-->
-        <div class="table-responsive">
+
+        <div>{{ data|length }} 件ヒットしました</div>
+
+        <div class="table-responsive" style="height:40vh;overflow:scroll;">
             <table class="table">
                 <thead class="thead-light">
                     <tr><th><div>日時</div></th><th><div>内容</div></th><th style="white-space:nowrap;"><div>削除</div></th></tr>
